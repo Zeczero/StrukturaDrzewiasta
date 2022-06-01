@@ -1,4 +1,4 @@
-# TreeStruct
+# Struktura Drzewiasta
 Source code of a solution for the internship recruitment task.
 
 ## Technologies
