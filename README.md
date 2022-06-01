@@ -1,5 +1,5 @@
 # TreeStruct
-A solution for the internship recruitment task.
+Source code of a solution for the internship recruitment task.
 
 ## Technologies
 C#, ASP.NET Core 3.1 version, Microsoft SQL Server, CSS, HTML5, Vanilla JavaScript/Jquery
