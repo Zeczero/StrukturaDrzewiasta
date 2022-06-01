@@ -1,0 +1,58 @@
+﻿@model TreeStruc.ViewModel.TreeViewModel
+
+@foreach (var node in Model.Nodes)
+{
+    var ulId = $"ul-{node.Id}";
+    var liId = $"li-{node.Id}";
+<li id="@liId" class="wholeNode">
+    @if (node.Children.Count > 0)
+    {
+        <span class="tree-collapse"><i style="color: yellow;" class="fa fa-folder"></i></span>
+    }
+    else
+    {
+        <span class="pl-3"></span>
+    }
+
+    <!-- BUTTONS SHOWN WHEN THE USER CLICK ON AN INFORMATION ICON -->
+    <p class="nodeItem d-inline-block rounded-circle border border-danger pl-2 pr-2">@node.Name</p>
+    <span class="menu">
+        <i class="fa fa-info-circle"></i>
+    </span>
+    
+    <div  class="pl-3 btn-group btn-group-toggle text-white options  hidden " id="add-btn-d"data-toggle="buttons">
+        <div class="btn btn-success active">
+            <a class="add render "
+               data-id="@node.Id"
+               data-controller="TreeStruc"
+               data-action="Add"
+               data-body-message="Add node to: @node.Name">Add Node</a>
+        </div>
+          <div class="btn btn-info active">
+            <a class="edit"
+               data-id="@node.Id"
+               data-controller="TreeStruc"
+               data-action="Edit"
+               onclick="pull(@node.Id)"
+               data-body-message="Editing: @node.Name">Update</a>
+        </div>
+         <div class="btn btn-danger delete text-white">
+           <a
+            data-id="@node.Id"
+            data-body-title:"Warning!"
+            data-controller="TreeStruc"
+             data-action="Delete"
+            data-body-message="The action will remove all children a @node.Name node!">Delete</a>
+        </div>
+    </div>
+
+
+    @if (node.Children.Count > 0)
+    {
+        <ul id="@ulId" class="collapse show collapsive">
+            @await Component.InvokeAsync("TreeComponents", new { nodes = node.Children })
+        </ul>
+    }
+</li>
+}
+
