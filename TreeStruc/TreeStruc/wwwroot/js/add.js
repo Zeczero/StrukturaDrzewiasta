@@ -1,8 +1,4 @@
-﻿
 
-/**
- * Showing pop-up window to add node
- * */
 $(".add").on('click', (e) => {
     e.preventDefault();
     target = e.target;
